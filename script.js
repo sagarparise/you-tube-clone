@@ -1,11 +1,18 @@
     const videoContainer = document.querySelector(".video-container");
+    let filters = document.querySelector(".filters");
     let filters_opt = document.querySelectorAll(".filter-options");
     let mainDiv = document.querySelector(".main-div");
     let menu = document.querySelector(".menu-icon");
     let sidebar = document.querySelector(".sidebar");
-    let api_key = "AIzaSyB7JH5EKF4zWVV5rVW0b-iwRIeWVInoK9k";
+    let api_key = "AIzaSyAayFrmjOY8Nd5JZORtbT230qUujIdPHSM";
     let base_url = "https://www.googleapis.com/youtube/v3";
    
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("LOADED");
+  
+    videoContent();
+    });
+
     menu.addEventListener("click", () => {
     if (window.innerWidth > 900) {
         sidebar.classList.toggle("small-sidebar");
@@ -16,16 +23,12 @@
     }
     });
 
-    let cancel = document.querySelector(".cancel");
+    let cancel = document.querySelector(".sidebar-logo .cancel");
 
     cancel.onclick = function () {
     sidebar.classList.remove("show");
     };
 
-    document.addEventListener("DOMContentLoaded", function () {
-    console.log("LOADED");
-    videoContent();
-    });
 
     // search query videos
    async function searchVideos(searchQuery){
@@ -41,11 +44,13 @@
           try{
             let url = `${base_url}/search?key=${api_key}&q=${searchQuery}&part=snippet&maxResults=50`;
             let response = await fetch(url);
-            let data = await response.json();
+            var data = await response.json();
             videoContainer.innerHTML = '';
             if (data.items && data.items.length > 0) {
                 // Iterate only if data.items is defined and not empty
                 data.items.forEach(item => {
+                 
+
                     getChannelIcon(item);
                 });
             } else {
@@ -62,7 +67,7 @@
         const url = `${base_url}/videos?key=${api_key}&part=snippet&chart=mostPopular&maxResults=50&regionCode=IN`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
+   
         //here we get you tube video data
         // here i am iterating over this item data 
         if (data.items && data.items.length > 0) {
@@ -87,7 +92,9 @@ const getChannelIcon = async (videoData) => {
     const url = `${base_url}/channels?key=${api_key}&part=snippet&id=${videoData.snippet.channelId}`;
     let response = await fetch(url);
     let data = await response.json();
+  
     videoData.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
+   
     makeVideoCard(videoData);
    }catch(error){
     console.log(error)
@@ -97,18 +104,22 @@ const getChannelIcon = async (videoData) => {
 
     // call makeVideoCard function
     const makeVideoCard = (data) => {
-    videoContainer.innerHTML += `
-            <div class="video" onclick="location.href= '/playvideo.html'">
-                <img src="${data.snippet.thumbnails.high.url}" class="thumbnail" >
-                <div class="content">
-                    <img src="${data.channelThumbnail}" class="channel-icon" alt="">
-                    <div class="info">
-                        <h4 class="title">${data.snippet.title}</h4>
-                        <p class="channel-name">${data.snippet.channelTitle}</p>
-                    </div>
-                </div>
-            </div>
-            `;
+    
+        let video= document.createElement("div");
+         video.classList.add("video");
+         video.innerHTML=`<img src="${data.snippet.thumbnails.high.url}" class="thumbnail" >
+         <div class="content">
+             <img src="${data.channelThumbnail}" class="channel-icon" alt="">
+             <div class="info">
+                 <h4 class="title">${data.snippet.title}</h4>
+                 <p class="channel-name">${data.snippet.channelTitle}</p>
+             </div>
+         </div>`;
+         video.addEventListener('click', ()=>{
+            openVideo(data);
+         })
+         videoContainer.appendChild(video);
+  
     };
 
     // make search bar
@@ -143,4 +154,14 @@ const getChannelIcon = async (videoData) => {
 
     }
 
+    function openVideo(data){
+        console.log(data)
+ 
+       localStorage.setItem("video", JSON.stringify(data));
+     
+
+        window.location.href = `/playvideo.html`;
+
+    }
+   
    

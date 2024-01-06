@@ -1,51 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="playvideo.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- ----------Navigation-Bar---------- -->
     <nav class="flex-div">
-        <div class="nav-left flex-div">
-         <i class="bx bx-menu-alt-left menu-icon"></i>       
-         <div class="flex-div">
-             <img src="images/youtube.png" alt="you tube" >
-             <h1>You Tube</h1>
-         </div>
+      <div class="nav-left flex-div">
+        <i class="bx bx-menu-alt-left menu-icon"></i>
+        <div class="flex-div">
+          <img src="images/youtube.png" alt="you tube" />
+          <h1>You Tube</h1>
         </div>
- 
-        <div class="nav-middle flex-div">
-         <div class="search-box flex-div">
-             <input type="text" placeholder="Search" class="search-content">
-             <i class='bx bx-search-alt-2 search-btn'></i>
-         </div>
-         <img src="images/voice-search.png" alt="voice" class="mic-icon">
-        </div>
- 
-        <div class="nav-right">
-         <img src="images/upload.png" alt="upload">
-         <img src="images/more.png" alt="more">
-         <img src="images/notification.png" alt="notification">
-         <div><img src="images/Jack.png" alt="profile" class="profile" ></div>
-        </div>
-     </nav>
+      </div>
 
-     <div class="container">
-        <div class="row">
-            <div class="play-video">
-                <video controls autoplay>
-                    <source src="">
-                </video>
+      <div class="nav-middle flex-div">
+        <div class="search-box flex-div">
+          <input type="text" placeholder="Search" class="search-content" />
+          <i class="bx bx-search-alt-2 search-btn"></i>
+        </div>
+        <img src="images/voice-search.png" alt="voice" class="mic-icon" />
+      </div>
+
+      <div class="nav-right">
+        <img src="images/upload.png" alt="upload" />
+        <img src="images/more.png" alt="more" />
+        <img src="images/notification.png" alt="notification" />
+        <div><img src="images/Jack.png" alt="profile" class="profile" /></div>
+      </div>
+    </nav>
+
+    <div class="vd-container">
+      <div class="row">
+
+        <div class="play-video">
+          <!-- <video controls>
+            <source src="images/video.mp4" />
+          </video> -->
+
+          <h2 class="main-title">
+           
+          </h2>
+          <div class="ch-logo-container">
+            <div class="left-sec">
+               <div class="ch-head">
+                <img src="" alt="">
+                <div class="ch-name">
+                    <p class="vd-channelName"></p> 
+                    <span style="font-size: 13px; padding-inline: 5px;">Subscribers</span>
+                </div>
+               </div>
+                <button class="join-btn">Join</button>
+                <div class="sb-btn">
+                    <i class='bx bxs-bell-ring'></i>
+                    <p>Subscribed</p>
+                </div>
             </div>
+            <div class="right-sec">
+                <div class="like-bx">
+                    <p>14k</p>
+                    <div class="verticle-line"></div>
+                    <i class='bx bxs-like'></i>
+                </div>
+                <div class="share-bx">
+                    <i class='bx bx-share' ></i>
+                    <p>Share</p>
+                </div>
+            </div>
+          </div>
         </div>
-     </div>
-<script src="script.js"></script>
-<script src="video.js"></script>
-</body>
-</html>
 
-  
+        <div class="right-sidebar">
+
+             
+          
+        </div>
+      </div>
+    </div>
+    <script src="video.js"></script>
+  </body>
+</html>
