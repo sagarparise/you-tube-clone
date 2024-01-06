@@ -19,7 +19,7 @@ Explore the YouTube Clone with our live demo: [YouTube Clone Demo](https://lordb
 To start using the YouTube Clone, follow these simple steps:
 1. **Clone the repository:**
     ```
-    git clone https://github.com/your-username/YoutubeClone.git
+    git clone https:https://github.com/sagarparise/you-tube-clone
     ```
 2. **Navigate to the project directory:**
     ```
@@ -41,6 +41,6 @@ Contributions are welcome! If you'd like to contribute to the project, please fo
 Special thanks to the creators of YouTube for inspiring this project.
 
 ## Follow me on LinkedIn
-Connect with me on LinkedIn for more updates: [LinkedIn Profile](https://www.linkedin.com/in/loodaysofcode-challenge-bb611a278/)
+Connect with me on LinkedIn for more updates: [LinkedIn Profile](https://www.linkedin.com/in/sagar-parise-1b68b21a3/)
 
 Happy coding!
