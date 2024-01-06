@@ -8,7 +8,7 @@ Welcome to the YouTube Clone project, a replication of some of the key features 
 - **Responsive Design:** Experience a user-friendly design optimized for both desktop and mobile devices.
 
 ## Live Demo
-Explore the YouTube Clone with our live demo: [YouTube Clone Demo](https://lordbakyarou.github.io/YoutubeClone/)
+Explore the YouTube Clone with our live demo: [YouTube Clone Demo](https://sagarparise.github.io/you-tube-clone/)
 
 ## Screenshots
 ![Screenshot (118)](https://github.com/sagarparise/you-tube-clone/assets/141607123/38d970df-b51a-4a7e-bb6f-cf8c4bffed33)
