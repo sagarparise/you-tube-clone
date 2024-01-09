@@ -62,7 +62,7 @@ async function queryRelatedData(qry){
     let response = await fetch(url);
     let data = await response.json();
     
-    //here we get you tube video data
+  
     // here i am iterating over this item data
     if (data.items && data.items.length > 0) {
       // Iterate only if data.items is defined and not empty
@@ -79,8 +79,7 @@ async function queryRelatedData(qry){
 }
 
 async function normalData(){
-  console.log('normal fun called')
-
+ 
   try {
     const url = `${base_url}/videos?key=${api_key}&part=snippet&chart=mostPopular&maxResults=50&regionCode=IN`;
     let response = await fetch(url);
