@@ -4,7 +4,7 @@
     let mainDiv = document.querySelector(".main-div");
     let menu = document.querySelector(".menu-icon");
     let sidebar = document.querySelector(".sidebar");
-    let api_key = "AIzaSyAayFrmjOY8Nd5JZORtbT230qUujIdPHSM";
+    let api_key = "AIzaSyC8KcPF-gRkMOKF8yvNV3utYg1xDhe62lw";
     let base_url = "https://www.googleapis.com/youtube/v3";
    
   document.addEventListener("DOMContentLoaded", function () {
@@ -51,7 +51,7 @@
                 data.items.forEach(item => {
                  
 
-                    getChannelIcon(item);
+                    getChannelIcon(item,searchQuery);
                 });
             } else {
                 console.log('No items found in the response.');
@@ -86,7 +86,7 @@
 
 
     //call the function
-const getChannelIcon = async (videoData) => {
+const getChannelIcon = async (videoData, searchQuery) => {
     // here i am fetching channel data
    try{
     const url = `${base_url}/channels?key=${api_key}&part=snippet&id=${videoData.snippet.channelId}`;
@@ -95,7 +95,7 @@ const getChannelIcon = async (videoData) => {
   
     videoData.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
    
-    makeVideoCard(videoData);
+    makeVideoCard(videoData, searchQuery);
    }catch(error){
     console.log(error)
    }
@@ -103,8 +103,8 @@ const getChannelIcon = async (videoData) => {
     };
 
     // call makeVideoCard function
-    const makeVideoCard = (data) => {
-    
+    const makeVideoCard = (data, searchQuery) => {
+  
         let video= document.createElement("div");
          video.classList.add("video");
          video.innerHTML=`<img src="${data.snippet.thumbnails.high.url}" class="thumbnail" >
@@ -116,7 +116,7 @@ const getChannelIcon = async (videoData) => {
              </div>
          </div>`;
          video.addEventListener('click', ()=>{
-            openVideo(data);
+            openVideo(data, searchQuery);
          })
          videoContainer.appendChild(video);
   
@@ -154,13 +154,17 @@ const getChannelIcon = async (videoData) => {
 
     }
 
-    function openVideo(data){
+    function openVideo(data, searchQuery){
         console.log(data)
- 
+   
        localStorage.setItem("video", JSON.stringify(data));
-     
 
-        window.location.href = `/playvideo.html`;
+      if(searchQuery && searchQuery.length){
+        console.log(searchQuery)
+        localStorage.setItem("query", searchQuery);
+      }
+
+       window.location.href = `/playvideo.html`;
 
     }
    
